@@ -5,7 +5,7 @@ export const Home = () => {
 
   let url;
 
-  process.env.NODE_ENV === "development" ? url = `http://localhost:8000` : url = ``;
+  process.env.NODE_ENV === "development" ? url = `http://localhost:9000` : url = ``;
 
   const history = useHistory();
 
@@ -13,9 +13,12 @@ export const Home = () => {
   const [state, setState] = useState({
     regno: "",
     password: "",
-    message: ""
+    message: "",
+    loading: false
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [regno, setRegno] = useState('');
 
   function toggle(e) {
     e.preventDefault();
@@ -54,7 +57,29 @@ export const Home = () => {
       setState({ ...state, message: res.message });
       setIsLoading(false);
     }
+  };
 
+  const signUp = async (e) => {
+    e.preventDefault();
+
+    const config = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(state)
+    };
+    setState({ ...state, loading: true });
+    const res = await (await fetch(`${url}/auth/schollRegister`, config)).json();
+
+    if (res.status === 200) {
+      localStorage.setItem("regno", res.regno);
+      history.push("/studentReg");
+    }
+    else if (res.status === 302) {
+      setMessage(res.message);
+      setState({ ...state, loading: false });
+    }
   };
 
   return (
@@ -65,11 +90,13 @@ export const Home = () => {
       {!(toLogin) ? <form onSubmit={(e) => Login(e)}>
         <input
           placeholder="Reg No"
+          required
           onChange={(e) => setState({ ...state, regno: e.target.value })}
         />
         <input
           placeholder="Password"
           type="password"
+          required
           onChange={(e) => setState({ ...state, password: e.target.value })}
         />
         {isLoading ? <button>Loading....</button>
@@ -77,10 +104,15 @@ export const Home = () => {
         <p>Forgot password?</p>
         <p onClick={(e) => toggle(e)} >Do not have account?</p>
       </form> :
-        <form>
+        <form onSubmit={(e) => signUp(e)}>
+          {message ? <div style={{ textAlign: "center" }}>
+            <p style={{ color: "red" }}>{message} </p>
+          </div> : ""}
           <input
-            placeholder="Reg No" />
-          <button>Sign up</button>
+            placeholder="Reg No"
+            onChange={(e) => setState({ ...state, regno: e.target.value })}
+            required />
+          {state.loading ? <button>Loading....</button> : <button>Sign up</button>}
           <p onClick={(e) => toggle(e)} >have account?</p>
         </form>
       }

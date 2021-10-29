@@ -10,10 +10,10 @@ export const StudentNavBar = () => {
   }
   return (
     <div className="student-bar">
-      <h3>Dashboard</h3>
+      <h3 onClick={() => history.push('/dashboard')} className="link">Dashboard</h3>
       <div className="links">
-        <p>History</p>
-        <p onClick={() => logOut()}>Log out</p>
+        <p onClick={() => history.push('/files')} className="link" >Results</p>
+        <p onClick={() => logOut()} className="link">Log out</p>
       </div>
     </div>
   );

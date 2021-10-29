@@ -8,11 +8,12 @@ export const UploadFiles = () => {
 
   let url;
 
-  process.env.NODE_ENV === "production" ? url = ` ` : url = `http://localhost:8000`;
+  process.env.NODE_ENV === "production" ? url = ` ` : url = `http://localhost:9000`;
 
   const history = useHistory();
 
   const token = localStorage.getItem('token');
+  const service = localStorage.getItem('service');
 
   const [file, setFile] = useState([]);
   const [file2, setFile2] = useState([]);
@@ -23,7 +24,8 @@ export const UploadFiles = () => {
   const [state, setState] = useState({
     bankslip: {},
     FormFile: {},
-    message: ""
+    message: "",
+    year: ""
   });
 
   const onDrop = File => {
@@ -48,12 +50,13 @@ export const UploadFiles = () => {
 
     setLoading(true);
 
+    const Year = state.year;
+
     if (!state.bankslip || !state.FormFile) {
       setState({ ...state, message: "upload all files" });
     }
     else {
       let formData = new FormData();
-
       formData.append('bankslip', state.bankslip);
       formData.append('FormFile', state.FormFile);
 
@@ -65,21 +68,17 @@ export const UploadFiles = () => {
         body: formData
       };
 
-      const service = 'transcipt';
 
-      const res = await (await fetch(`${url}/student/sendToFinance?service=${service}`, config)).json();
+
+      const res = await (await fetch(`${url}/student/sendToFinance?service=${service}&&year=${Year}`, config)).json();
 
       if (res.status === 200) {
-
         setSuccess(true);
         setTimeout(() => {
           window.location.reload();
         }, 4000);
-
-        window.location.reload();
       }
       else if (res.status === 401) {
-
         localStorage.clear();
         history.push(`/`);
       }
@@ -88,9 +87,6 @@ export const UploadFiles = () => {
         setState({ ...state, message: res.message });
       }
     }
-
-
-
   };
 
 
@@ -111,10 +107,19 @@ export const UploadFiles = () => {
         <p style={{ color: "whitesmoke" }}>{state.message} </p>
       </div> : ""}
       {success ? <div style={{ width: "100%", padding: "7px", textAlign: "center", backgroundColor: "green" }}>
-        <p style={{ color: "whitesmoke" }}>{success} </p>
+        <p style={{ color: "whitesmoke" }}>Request sent succesfully  </p>
       </div> : ""}
       <div>
         <form onSubmit={(e) => uploadFile(e)}>
+          <select
+            required
+            onChange={(e) => setState({ ...state, year: e.target.value })}
+          >
+            <option>--select year---</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+          </select>
           <Dropzone multiple={false}
             onDrop={onDrop}>
             {({ getRootProps, getInputProps }) => (
@@ -135,7 +140,7 @@ export const UploadFiles = () => {
             onDrop={onDrop2}>
             {({ getRootProps, getInputProps }) => (
               <section>
-                <h3>Upload bankslip</h3>
+                <h3>Upload filled form</h3>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} />
                   {file2.length > 0 ? <div className="selected-file">

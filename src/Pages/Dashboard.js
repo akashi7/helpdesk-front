@@ -15,6 +15,14 @@ export const Dashboard = () => {
   }, []);
 
   function RequestTranscipt() {
+    let service = 'transcipt';
+    localStorage.setItem('service', service);
+    history.push('/transcipt');
+  }
+
+  function RequestToWhom() {
+    let service = 'to whom';
+    localStorage.setItem('service', service);
     history.push('/transcipt');
   }
 
@@ -29,11 +37,7 @@ export const Dashboard = () => {
         </div>
         <div className="service">
           <p>To whom</p>
-          <p><u>Request</u></p>
-        </div>
-        <div className="service">
-          <p>New Student card</p>
-          <p><u>Request</u></p>
+          <p onClick={() => RequestToWhom()} ><u>Request</u></p>
         </div>
       </div>
     </div>

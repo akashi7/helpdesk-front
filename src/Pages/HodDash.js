@@ -3,13 +3,12 @@ import { StaffNavBar } from '../Components/AppBar';
 import { UserContext } from '../Context/UserContext';
 import { useHistory } from "react-router-dom";
 
-export const FinanceDashboard = () => {
-
+export const HodDash = () => {
   const token = localStorage.getItem('token');
 
   const history = useHistory();
 
-  const { FinanceReq, FinanceGetRequests } = useContext(UserContext);
+  const { HodReq, HODGetRequests } = useContext(UserContext);
 
   useEffect(() => {
     (async () => {
@@ -17,7 +16,7 @@ export const FinanceDashboard = () => {
         history.push("/");
       }
       else {
-        await FinanceGetRequests(token);
+        await HODGetRequests(token);
       }
     })();
     //eslint-disable-next-line
@@ -25,16 +24,15 @@ export const FinanceDashboard = () => {
 
   const viewRequest = async (id) => {
     localStorage.setItem("ID", id);
-    history.push(`/finance/viewReq/${id}`);
+    history.push(`/hod/viewReq/${id}`);
   };
-
   return (
     <div>
       <StaffNavBar />
       <div>
-        {FinanceReq.finance.length === 0 ?
+        {HodReq.HOD.length === 0 ?
           <div> You have no requests </div> :
-          FinanceReq.finance.map(({ id, service, time, regno, status }) => {
+          HodReq.HOD.map(({ id, service, time, regno, status }) => {
             return (
               <div key={id} className="requests" onClick={() => viewRequest(id)}>
                 <p>{regno}</p>

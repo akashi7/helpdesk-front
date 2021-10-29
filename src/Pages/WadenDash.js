@@ -3,13 +3,12 @@ import { StaffNavBar } from '../Components/AppBar';
 import { UserContext } from '../Context/UserContext';
 import { useHistory } from "react-router-dom";
 
-export const FinanceDashboard = () => {
-
+export const WadenDash = () => {
   const token = localStorage.getItem('token');
 
   const history = useHistory();
 
-  const { FinanceReq, FinanceGetRequests } = useContext(UserContext);
+  const { wadenReq, WadenGetRequests } = useContext(UserContext);
 
   useEffect(() => {
     (async () => {
@@ -17,7 +16,7 @@ export const FinanceDashboard = () => {
         history.push("/");
       }
       else {
-        await FinanceGetRequests(token);
+        await WadenGetRequests(token);
       }
     })();
     //eslint-disable-next-line
@@ -25,16 +24,15 @@ export const FinanceDashboard = () => {
 
   const viewRequest = async (id) => {
     localStorage.setItem("ID", id);
-    history.push(`/finance/viewReq/${id}`);
+    history.push(`/waden/viewReq/${id}`);
   };
-
   return (
     <div>
       <StaffNavBar />
       <div>
-        {FinanceReq.finance.length === 0 ?
+        {wadenReq.waden.length === 0 ?
           <div> You have no requests </div> :
-          FinanceReq.finance.map(({ id, service, time, regno, status }) => {
+          wadenReq.waden.map(({ id, service, time, regno, status }) => {
             return (
               <div key={id} className="requests" onClick={() => viewRequest(id)}>
                 <p>{regno}</p>
@@ -45,6 +43,7 @@ export const FinanceDashboard = () => {
             );
           })}
       </div>
+
     </div>
   );
 };

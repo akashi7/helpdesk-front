@@ -5,7 +5,7 @@ export const StaffLogin = () => {
 
   let url;
 
-  process.env.NODE_ENV === "development" ? url = `http://localhost:8000` : url = ``;
+  process.env.NODE_ENV === "development" ? url = `http://localhost:9000` : url = ``;
 
   const history = useHistory();
 
@@ -30,15 +30,15 @@ export const StaffLogin = () => {
 
     if (res.status === 201) {
       localStorage.setItem("token", res.token);
-      history.push("/dashboard");
+      history.push("/wadenDash");
     }
     if (res.status === 202) {
       localStorage.setItem("token", res.token);
-      history.push("/dashboard");
+      history.push("/libraryDash");
     }
     if (res.status === 203) {
       localStorage.setItem("token", res.token);
-      history.push("/dashboard");
+      history.push("/hodDash");
     }
     if (res.status === 204) {
       localStorage.setItem("token", res.token);

@@ -3,13 +3,13 @@ import { StaffNavBar } from '../Components/AppBar';
 import { UserContext } from '../Context/UserContext';
 import { useHistory } from "react-router-dom";
 
-export const FinanceDashboard = () => {
+export const LibraryDash = () => {
 
   const token = localStorage.getItem('token');
 
   const history = useHistory();
 
-  const { FinanceReq, FinanceGetRequests } = useContext(UserContext);
+  const { libraReq, LibraryGetRequests } = useContext(UserContext);
 
   useEffect(() => {
     (async () => {
@@ -17,7 +17,7 @@ export const FinanceDashboard = () => {
         history.push("/");
       }
       else {
-        await FinanceGetRequests(token);
+        await LibraryGetRequests(token);
       }
     })();
     //eslint-disable-next-line
@@ -25,16 +25,16 @@ export const FinanceDashboard = () => {
 
   const viewRequest = async (id) => {
     localStorage.setItem("ID", id);
-    history.push(`/finance/viewReq/${id}`);
+    history.push(`/library/viewReq/${id}`);
   };
 
   return (
     <div>
       <StaffNavBar />
       <div>
-        {FinanceReq.finance.length === 0 ?
+        {libraReq.library.length === 0 ?
           <div> You have no requests </div> :
-          FinanceReq.finance.map(({ id, service, time, regno, status }) => {
+          libraReq.library.map(({ id, service, time, regno, status }) => {
             return (
               <div key={id} className="requests" onClick={() => viewRequest(id)}>
                 <p>{regno}</p>
