@@ -29,6 +29,9 @@ const initialState = {
   },
   StudentFiles: {
     files: []
+  },
+  StudentFile: {
+    file: []
   }
 };
 
@@ -238,13 +241,35 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  //student view file
+
+  const studentViewFile = async (token, id) => {
+    const config = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    };
+    const res = await (await fetch(`${url}/student/myfile?id=${id}`, config)).json();
+    if (res.status === 200) {
+      dispatch({
+        type: 'STUDENT_FILE',
+        payload: res.data
+      });
+    }
+    else if (res.status === 401) {
+      localStorage.clear();
+      History.push('/');
+    }
+  };
+
 
 
   return (
     <UserContext.Provider value={
       {
         ...state, FinanceGetRequests, FinanceviewRequest, WadenGetRequests, WadenviewRequest,
-        LibraryGetRequests, LibraryviewRequest, HODGetRequests, HODviewRequest, studentViewFiles
+        LibraryGetRequests, LibraryviewRequest, HODGetRequests, HODviewRequest, studentViewFiles, studentViewFile
       }
     }>
       {children}

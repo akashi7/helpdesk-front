@@ -18,7 +18,6 @@ export const Home = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
-  const [regno, setRegno] = useState('');
 
   function toggle(e) {
     e.preventDefault();

@@ -3,7 +3,6 @@ import './App.css';
 import { Dashboard } from './Pages/Dashboard';
 import { FinanceDashboard } from './Pages/FinanceDashboard';
 import { Home } from './Pages/Home';
-import { QQrcode } from './Pages/Qrcode';
 import { RequestTranscipt } from './Pages/RequestTranscipt';
 import { StaffLogin } from './Pages/StaffLogin';
 import { UploadFiles } from './Pages/UploadFiles';
@@ -17,6 +16,7 @@ import { HodDash } from './Pages/HodDash';
 import { HodViewReq } from './Pages/HodViewReq';
 import { StudentReg } from './Pages/StudentReg';
 import { StudentFiles } from './Pages/StudentFiles';
+import { DownloadFile } from './Pages/DownloadFile';
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
           <Route path="/dashboard" component={Dashboard} exact />
           <Route path="/studentReg" component={StudentReg} exact />
           <Route path="/files" component={StudentFiles} exact />
+          <Route path="/downloadFile" component={DownloadFile} exact />
           {/*Finance Routes */}
           <Route path="/financeDash" component={FinanceDashboard} exact />
           <Route path="/finance/viewReq/:id" component={FinanceViewReq} exact />

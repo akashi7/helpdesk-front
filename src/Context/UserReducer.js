@@ -45,6 +45,11 @@ export const UserReducer = (state, action) => {
         ...state,
         StudentFiles: action.payload
       };
+    case 'STUDENT_FILE':
+      return {
+        ...state,
+        StudentFile: action.payload
+      };
     default:
       return null;
   }

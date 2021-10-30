@@ -68,8 +68,6 @@ export const UploadFiles = () => {
         body: formData
       };
 
-
-
       const res = await (await fetch(`${url}/student/sendToFinance?service=${service}&&year=${Year}`, config)).json();
 
       if (res.status === 200) {

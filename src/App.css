@@ -88,3 +88,12 @@
 .link:hover {
   cursor: pointer;
 }
+.d-page {
+  margin: 10px;
+  padding: 7px;
+  display: flex;
+  flex-direction: row;
+}
+.dlink {
+  margin: 10px;
+}
