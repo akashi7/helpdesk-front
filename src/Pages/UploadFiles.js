@@ -107,11 +107,12 @@ export const UploadFiles = () => {
       {success ? <div style={{ width: "100%", padding: "7px", textAlign: "center", backgroundColor: "green" }}>
         <p style={{ color: "whitesmoke" }}>Request sent succesfully  </p>
       </div> : ""}
-      <div>
+      <div className="files">
         <form onSubmit={(e) => uploadFile(e)}>
           <select
             required
             onChange={(e) => setState({ ...state, year: e.target.value })}
+            className="choose"
           >
             <option>--select year---</option>
             <option>1</option>
@@ -121,7 +122,7 @@ export const UploadFiles = () => {
           <Dropzone multiple={false}
             onDrop={onDrop}>
             {({ getRootProps, getInputProps }) => (
-              <section>
+              <section className="zone">
                 <h3>Upload bankslip</h3>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} />
@@ -137,7 +138,7 @@ export const UploadFiles = () => {
           <Dropzone multiple={false}
             onDrop={onDrop2}>
             {({ getRootProps, getInputProps }) => (
-              <section>
+              <section className="zone">
                 <h3>Upload filled form</h3>
                 <div {...getRootProps({ className: "dropzone" })}>
                   <input {...getInputProps()} />
@@ -150,7 +151,7 @@ export const UploadFiles = () => {
               </section>
             )}
           </Dropzone>
-          {loading ? <button>Loading.....</button> : <button>Send</button>}
+          {loading ? <button className="buttonB">Loading.....</button> : <button className="buttonB">Send</button>}
         </form>
       </div>
       <div>

@@ -30,8 +30,17 @@ export const StaffNavBar = () => {
     <div className="student-bar">
       <h3>Dashboard</h3>
       <div className="links">
-        <p onClick={() => logOut()}>Log out</p>
+        <p onClick={() => logOut()} className="link">Log out</p>
       </div>
+    </div>
+  );
+};
+
+export const HomeBar = () => {
+
+  return (
+    <div className="student-bar">
+      <h3>Help desk</h3>
     </div>
   );
 };

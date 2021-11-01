@@ -112,7 +112,7 @@ export const WadenViewReq = () => {
               <br></br>
               <br></br>
               <button onClick={(e, u, i, k, t, v, l) => approve(e, regno, service, phone, formslip, department, year)} > Approve doc </button>
-              {loading ? <button>Loading....</button> : <button onClick={(e, i, k, l) => Reject(e, regno, service, phone)} >Reject</button>}
+              {loading ? <button className="buttonB">Loading....</button> : <button onClick={(e, i, k, l) => Reject(e, regno, service, phone)} className="buttonB" >Reject</button>}
             </div>
           );
         })}

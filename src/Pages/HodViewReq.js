@@ -139,7 +139,7 @@ export const HodViewReq = () => {
                     </section>
                   )}
                 </Dropzone>
-                {loading ? <button>Loading....</button> : <button>Send</button>}
+                {loading ? <button className="buttonB">Loading....</button> : <button className="buttonB">Send</button>}
               </form>
             </div>
           );

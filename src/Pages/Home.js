@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { HomeBar } from '../Components/AppBar';
 
 export const Home = () => {
 
@@ -83,38 +84,45 @@ export const Home = () => {
 
   return (
     <div>
+      <HomeBar />
       {state.message ? <div style={{ textAlign: "center" }}>
         <p style={{ color: "red" }}>{state.message} </p>
       </div> : ""}
-      {!(toLogin) ? <form onSubmit={(e) => Login(e)}>
-        <input
-          placeholder="Reg No"
-          required
-          onChange={(e) => setState({ ...state, regno: e.target.value })}
-        />
-        <input
-          placeholder="Password"
-          type="password"
-          required
-          onChange={(e) => setState({ ...state, password: e.target.value })}
-        />
-        {isLoading ? <button>Loading....</button>
-          : <button>Login</button>}
-        <p>Forgot password?</p>
-        <p onClick={(e) => toggle(e)} >Do not have account?</p>
-      </form> :
-        <form onSubmit={(e) => signUp(e)}>
-          {message ? <div style={{ textAlign: "center" }}>
-            <p style={{ color: "red" }}>{message} </p>
-          </div> : ""}
+      <div className="home-div">
+        {!(toLogin) ? <form onSubmit={(e) => Login(e)}>
+          <p>STUDENT LOGIN</p>
           <input
             placeholder="Reg No"
+            required
+            className="input"
             onChange={(e) => setState({ ...state, regno: e.target.value })}
-            required />
-          {state.loading ? <button>Loading....</button> : <button>Sign up</button>}
-          <p onClick={(e) => toggle(e)} >have account?</p>
-        </form>
-      }
+          />
+          <input
+            placeholder="Password"
+            type="password"
+            required
+            className="input"
+            onChange={(e) => setState({ ...state, password: e.target.value })}
+          />
+          {isLoading ? <button className="button" >Loading....</button>
+            : <button className="button" >Login</button>}
+          <p onClick={(e) => toggle(e)} >Do not have account?</p>
+        </form> :
+          <form onSubmit={(e) => signUp(e)}>
+            <p>STUDENT SIGN UP</p>
+            {message ? <div style={{ textAlign: "center" }}>
+              <p style={{ color: "red" }}>{message} </p>
+            </div> : ""}
+            <input
+              placeholder="Reg No"
+              onChange={(e) => setState({ ...state, regno: e.target.value })}
+              className="input"
+              required />
+            {state.loading ? <button className="button" >Loading....</button> : <button className="button" >Sign up</button>}
+            <p onClick={(e) => toggle(e)} >have account?</p>
+          </form>
+        }
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from "react-router-dom";
+import { HomeBar } from '../Components/AppBar';
 
 export const StaffLogin = () => {
 
@@ -60,20 +61,27 @@ export const StaffLogin = () => {
 
   return (
     <div>
+      <HomeBar />
       {state.message ? <div style={{ textAlign: "center" }}>
         <p style={{ color: "red" }}>{state.message} </p>
       </div> : ""}
-      <form onSubmit={e => login(e)}>
-        <input placeholder="Code"
-          type="text"
-          onChange={(e) => setState({ ...state, code: e.target.value })}
-        />
-        <input placeholder="Password"
-          type="password"
-          onChange={(e) => setState({ ...state, password: e.target.value })}
-        />
-        {isLoading ? <button>Loading....</button> : <button>Login</button>}
-      </form>
+      <div className="home-div">
+        <form onSubmit={e => login(e)}>
+          <p>STAFF LOGIN</p>
+          <input placeholder="Code"
+            type="text"
+            onChange={(e) => setState({ ...state, code: e.target.value })}
+            className="input"
+          />
+          <input placeholder="Password"
+            type="password"
+            className="input"
+            onChange={(e) => setState({ ...state, password: e.target.value })}
+          />
+          {isLoading ? <button className="button">Loading....</button> : <button className="button">Login</button>}
+        </form>
+      </div>
+
     </div>
   );
 };

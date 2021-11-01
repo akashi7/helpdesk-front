@@ -43,7 +43,7 @@
 .dropzone {
   text-align: center;
   padding: 30px;
-  border: 3px dashed darkblue;
+  border: 3px dashed #142501;
   background-color: #fafafa;
   color: #bdbdbd;
   cursor: pointer;
@@ -96,4 +96,57 @@
 }
 .dlink {
   margin: 10px;
+}
+.home-div {
+  text-align: center;
+  background-color: whitesmoke;
+  padding: 15px;
+  margin-top: 160px;
+  width: 30%;
+  margin-left: 480px;
+  border-radius: 10px;
+}
+.input {
+  border: none;
+  padding: 0.5rem 0.1rem;
+  width: 100%;
+  border-radius: 2px;
+  border-bottom: 1px solid black;
+  transition: all 0.5s;
+  margin: 5px;
+}
+.button {
+  margin-top: 10px;
+  background: #142501;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  width: 100%;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: whitesmoke;
+}
+.buttonB {
+  margin-top: 10px;
+  background: #142501;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 2px;
+  width: fit-content;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: whitesmoke;
+}
+.choose {
+  padding: 10px;
+}
+.files {
+  margin-top: 50px;
+  text-align: center;
+  padding: 10px;
+}
+.zone {
+  padding: 10px;
+  width: 50%;
+  margin-left: 310px;
 }
