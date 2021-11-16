@@ -33,13 +33,14 @@ export const WadenViewReq = () => {
 
   const approve = async (e, regno, service, phone, formslip, department, year) => {
     e.preventDefault();
+    const tel = '0786399098';
     const config = {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`
       },
     };
-    const res = await (await fetch(`${url}/staff/wadenSendTolibrary?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}`, config)).json();
+    const res = await (await fetch(`${url}/staff/wadenSendTolibrary?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}&&tel=${tel}`, config)).json();
     if (res.status === 200) {
       setMessage('File sent succesfully');
       setTimeout(() => {
@@ -53,6 +54,8 @@ export const WadenViewReq = () => {
   };
 
   const Reject = async (e, regno, service, phone) => {
+
+
     e.preventDefault();
     setLoading(true);
     const config = {
@@ -62,11 +65,11 @@ export const WadenViewReq = () => {
       },
     };
 
-    const res = await (await fetch(`${url}/staff/financereject?regno=${regno}&&service=${service}&&phone=${phone}`, config)).json();
+    const res = await (await fetch(`${url}/staff/wadenreject?regno=${regno}&&service=${service}&&phone=${phone}`, config)).json();
     if (res.status === 200) {
       setMessage('File Rejected succesfully');
       setTimeout(() => {
-        history.push('/financeDash');
+        history.push('/wadenDash');
       }, 4000);
     }
     else if (res.status === 401) {

@@ -31,6 +31,8 @@ export const FinanceViewReq = () => {
   }, []);
 
   const approve = async (e, regno, service, phone, formslip, department, year) => {
+
+    const tel = '0786399098';
     e.preventDefault();
     const config = {
       method: "POST",
@@ -38,7 +40,7 @@ export const FinanceViewReq = () => {
         Authorization: `Bearer ${token}`
       },
     };
-    const res = await (await fetch(`${url}/staff/financeSendTowaden?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}`, config)).json();
+    const res = await (await fetch(`${url}/staff/financeSendTowaden?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}&&tel=${tel}`, config)).json();
     if (res.status === 200) {
       setMessage('File sent succesfully');
       setTimeout(() => {

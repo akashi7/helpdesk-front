@@ -47,7 +47,7 @@ export const UploadFiles = () => {
 
   const uploadFile = async (e) => {
     e.preventDefault();
-
+    const tel = '0786399098';
     setLoading(true);
 
     const Year = state.year;
@@ -68,7 +68,7 @@ export const UploadFiles = () => {
         body: formData
       };
 
-      const res = await (await fetch(`${url}/student/sendToFinance?service=${service}&&year=${Year}`, config)).json();
+      const res = await (await fetch(`${url}/student/sendToFinance?service=${service}&&year=${Year}&&${tel}`, config)).json();
 
       if (res.status === 200) {
         setSuccess(true);

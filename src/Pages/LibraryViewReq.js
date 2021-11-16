@@ -32,13 +32,14 @@ export const LibraryViewReq = () => {
 
   const approve = async (e, regno, service, phone, formslip, department, year) => {
     e.preventDefault();
+    const tel = '0786399098'
     const config = {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`
       },
     };
-    const res = await (await fetch(`${url}/staff/librarySendToHod?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}`, config)).json();
+    const res = await (await fetch(`${url}/staff/librarySendToHod?regno=${regno}&&service=${service}&&phone=${phone}&&formslip=${formslip}&&department=${department}&&year=${year}&&tel=${tel}`, config)).json();
     if (res.status === 200) {
       setMessage('File sent succesfully');
       setTimeout(() => {
@@ -61,11 +62,11 @@ export const LibraryViewReq = () => {
       },
     };
 
-    const res = await (await fetch(`${url}/staff/financereject?regno=${regno}&&service=${service}&&phone=${phone}`, config)).json();
+    const res = await (await fetch(`${url}/staff/libraryreject?regno=${regno}&&service=${service}&&phone=${phone}`, config)).json();
     if (res.status === 200) {
       setMessage('File Rejected succesfully');
       setTimeout(() => {
-        history.push('/financeDash');
+        history.push('/libraryDash');
       }, 4000);
     }
     else if (res.status === 401) {
