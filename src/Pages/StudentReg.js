@@ -49,6 +49,10 @@ export const StudentReg = () => {
       setState({ ...state, message: res.message });
       setIsLoading(false);
     }
+    else if (res.status === 207) {
+      setState({ ...state, message: res.message });
+      setIsLoading(false);
+    }
   };
 
 
@@ -59,32 +63,41 @@ export const StudentReg = () => {
       {state.message ? <div style={{ textAlign: "center" }}>
         <p style={{ color: "red" }}>{state.message} </p>
       </div> : ""}
-      <form onSubmit={(e) => completeSignUp(e)}>
-        <input placeholder="Full names"
-          required
-          onChange={(e) => setState({ ...state, full_names: e.target.value })}
-        />
-        <input placeholder="Tel"
-          required
-          onChange={(e) => setState({ ...state, phone: e.target.value })} />
-        <select onChange={(e) => setState({ ...state, department: e.target.value })} >
-          <option>--Select department--</option>
-          <option>IT</option>
-          <option>EEE</option>
-          <option>CID</option>
-        </select>
-        <input placeholder="Password"
-          type="password"
-          required
-          onChange={(e) => setState({ ...state, password: e.target.value })} />
-        <input placeholder="Confirm password"
-          type="password"
-          required
-          onChange={(e) => setState({ ...state, confirmPassword: e.target.value })}
-        />
-        {isLoading ? <button>Loading....</button>
-          : <button>Send</button>}
-      </form>
+      <div className="home-div">
+        <p>STUDENT REGISTRATION</p>
+        <form onSubmit={(e) => completeSignUp(e)}>
+          <input placeholder="Full names"
+            required
+            className="input"
+            onChange={(e) => setState({ ...state, full_names: e.target.value })}
+          />
+          <input placeholder="Tel"
+            required
+            className="input"
+            onChange={(e) => setState({ ...state, phone: e.target.value })} />
+          <select onChange={(e) => setState({ ...state, department: e.target.value })} className="selects" required >
+            <option>--Select department--</option>
+            <option>IT</option>
+            <option>EEE</option>
+            <option>CID</option>
+            <option>MECHANICAL</option>
+            <option>MINING</option>
+          </select>
+          <input placeholder="Password"
+            type="password"
+            required
+            className="input"
+            onChange={(e) => setState({ ...state, password: e.target.value })} />
+          <input placeholder="Confirm password"
+            type="password"
+            required
+            className="input"
+            onChange={(e) => setState({ ...state, confirmPassword: e.target.value })}
+          />
+          {isLoading ? <button className="button">Loading....</button>
+            : <button className="button">Send</button>}
+        </form>
+      </div>
     </div>
   );
 };

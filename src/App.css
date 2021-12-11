@@ -6,8 +6,21 @@
 .student-bar {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
-  background-color: whitesmoke;
+  text-transform: uppercase;
+  padding: 20px;
+  background-color: darkgreen;
+}
+.student-bars {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+  background-color: darkgreen;
+}
+.student-bars h3 {
+  color: white;
+}
+.student-bar h3 {
+  color: white;
 }
 .links {
   display: flex;
@@ -39,6 +52,8 @@
 .to-next {
   display: flex;
   justify-content: space-around;
+  margin-top: 20px;
+  padding: 20px;
 }
 .dropzone {
   text-align: center;
@@ -85,7 +100,15 @@
   margin: 8px;
   padding: 8px;
 }
+
+.link {
+  color: white;
+}
+
 .link:hover {
+  cursor: pointer;
+}
+.linkv:hover {
   cursor: pointer;
 }
 .d-page {
@@ -107,17 +130,16 @@
   border-radius: 10px;
 }
 .input {
-  border: none;
+  border: 1px solid black;
   padding: 0.5rem 0.1rem;
   width: 100%;
   border-radius: 2px;
-  border-bottom: 1px solid black;
   transition: all 0.5s;
   margin: 5px;
 }
 .button {
   margin-top: 10px;
-  background: #142501;
+  background: darkgreen;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 2px;
@@ -128,7 +150,7 @@
 }
 .buttonB {
   margin-top: 10px;
-  background: #142501;
+  background: darkgreen;
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 2px;
@@ -149,4 +171,58 @@
   padding: 10px;
   width: 50%;
   margin-left: 310px;
+}
+.selects {
+  border: 1px solid black;
+  padding: 0.5rem 0.1rem;
+  width: 100%;
+  border-radius: 2px;
+  transition: all 0.5s;
+  margin: 5px;
+}
+.By {
+  padding: 10px;
+  background-color: darkgreen;
+  color: white;
+}
+.Body {
+  background-image: url('./images/STUDENTS.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.STAFF {
+  background-image: url('./images/STFF.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.select {
+  padding: 10px;
+}
+.index {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: whitesmoke;
+  color: black;
+  padding: 9px;
+}
+.yes {
+  text-align: center;
+  align-items: center;
+}
+.welcome {
+  padding: 10px;
+  margin-top: 100px;
+}
+.footer {
+  height: 37px;
+  background-color: darkgreen;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+.Indexa {
+  height: calc(100vh - 40px);
 }

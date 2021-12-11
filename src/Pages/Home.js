@@ -83,7 +83,7 @@ export const Home = () => {
   };
 
   return (
-    <div>
+    <div className="Body">
       <HomeBar />
       {state.message ? <div style={{ textAlign: "center" }}>
         <p style={{ color: "red" }}>{state.message} </p>
@@ -106,7 +106,9 @@ export const Home = () => {
           />
           {isLoading ? <button className="button" >Loading....</button>
             : <button className="button" >Login</button>}
-          <p onClick={(e) => toggle(e)} >Do not have account?</p>
+          <p onClick={(e) => toggle(e)} className="linkv" >Do not have account?</p>
+          <br></br>
+          <p className="linkv" onClick={() => history.push("/student/forgotPassword")}>Forgot password?</p>
         </form> :
           <form onSubmit={(e) => signUp(e)}>
             <p>STUDENT SIGN UP</p>

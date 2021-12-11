@@ -29,7 +29,7 @@ export const RequestTranscipt = () => {
         <a href={Form} download >Download Form</a>
         <div className="to-next">
           <p>Downloaded?</p>
-          <button onClick={(e) => next(e)}>next</button>
+          <button onClick={(e) => next(e)} className="By">next</button>
         </div>
       </div>
     </div>

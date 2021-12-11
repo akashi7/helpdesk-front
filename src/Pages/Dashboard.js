@@ -33,11 +33,11 @@ export const Dashboard = () => {
         <h4>Services</h4>
         <div className="service">
           <p>Transcipt</p>
-          <p onClick={() => RequestTranscipt()} className="link" ><u>Request</u></p>
+          <p onClick={() => RequestTranscipt()} className="linkv" ><u>Request</u></p>
         </div>
         <div className="service">
           <p>To whom</p>
-          <p onClick={() => RequestToWhom()} className="link" ><u>Request</u></p>
+          <p onClick={() => RequestToWhom()} className="linkv" ><u>Request</u></p>
         </div>
       </div>
     </div>

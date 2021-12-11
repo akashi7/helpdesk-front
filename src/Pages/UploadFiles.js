@@ -156,7 +156,6 @@ export const UploadFiles = () => {
       </div>
       <div>
       </div>
-
     </div>
   );
 };

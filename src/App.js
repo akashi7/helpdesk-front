@@ -17,13 +17,17 @@ import { HodViewReq } from './Pages/HodViewReq';
 import { StudentReg } from './Pages/StudentReg';
 import { StudentFiles } from './Pages/StudentFiles';
 import { DownloadFile } from './Pages/DownloadFile';
+import { Index } from './Pages/Index';
+import { ForgotPassword } from './Pages/ForgotPassword';
 
 function App() {
   return (
     <Router>
       <Switch>
         <UserProvider>
-          <Route path="/" component={Home} exact />
+          <Route path="/" component={Index} exact />
+          <Route path="/student" component={Home} exact />
+          <Route path="/student/forgotPassword" component={ForgotPassword} exact />
           <Route path="/staff" component={StaffLogin} exact />
           {/*Student  Routes */}
           <Route path="/transcipt" component={RequestTranscipt} exact />

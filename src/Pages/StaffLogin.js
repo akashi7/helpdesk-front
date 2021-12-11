@@ -60,7 +60,7 @@ export const StaffLogin = () => {
   };
 
   return (
-    <div>
+    <div className="STAFF">
       <HomeBar />
       {state.message ? <div style={{ textAlign: "center" }}>
         <p style={{ color: "red" }}>{state.message} </p>
